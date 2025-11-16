@@ -57,7 +57,7 @@ namespace EquilibraMais.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "USUARIO_GS",
+                name: "USUARIO",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "NUMBER(10)", nullable: false)
@@ -68,7 +68,7 @@ namespace EquilibraMais.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_USUARIO_GS", x => x.ID);
+                    table.PrimaryKey("PK_USUARIO", x => x.ID);
                 });
         }
 
@@ -85,7 +85,7 @@ namespace EquilibraMais.Migrations
                 name: "SETOR");
 
             migrationBuilder.DropTable(
-                name: "USUARIO_GS");
+                name: "USUARIO");
         }
     }
 }

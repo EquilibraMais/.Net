@@ -8,11 +8,14 @@ public class UsuarioEndpoints
 {
     public static void Map(RouteGroupBuilder group)
     {
-    group.MapGroup("/usuarios").WithTags("Usuario").RequireAuthorization();
+    group.MapGroup("/usuarios").WithTags("Usuario");
         
         //Get all
         group.MapGet("/usuarios", async (EquilibraMaisDbContext db) =>
-            await db.Usuarios.ToListAsync())
+            await db.Usuarios
+                .Include(u => u.Setor)
+                .ThenInclude(s => s.Empresa)
+                .ToListAsync())
             .Produces<Usuario>(StatusCodes.Status200OK)
             .Produces(StatusCodes.Status404NotFound)
             .WithSummary("Retorna todos os usuários")
@@ -22,7 +25,10 @@ public class UsuarioEndpoints
         //GetById
         group.MapGet("/usuarios/{id}", async (int id, EquilibraMaisDbContext db) =>
         {
-            var usuario = await db.Usuarios.FindAsync(id);
+            var usuario = await db.Usuarios
+                .Include(u => u.Setor)
+                .ThenInclude(s => s.Empresa)  
+                .FirstOrDefaultAsync(u => u.Id == id);
             return usuario is not null ? Results.Ok(usuario) : Results.NotFound();
         })
         .Produces<Usuario>(StatusCodes.Status200OK)

@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace EquilibraMais.Model;
 
-[Table("USUARIO_GS")]
+[Table("USUARIO")]
 public class Usuario : IBindableFromHttpContext<Usuario>
 {
     public static async ValueTask<Usuario?> BindAsync(HttpContext context, ParameterInfo parameter)
@@ -42,4 +42,6 @@ public class Usuario : IBindableFromHttpContext<Usuario>
     [Column("SETOR_ID")]
     [Description("Identificador único do Setor que o Usuário pertence")]
     public int Setor_id { get; set; }
+    
+    public Setor Setor { get; set; }
 }

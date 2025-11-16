@@ -153,3 +153,11 @@ C:\Users\mathe\OneDrive\Área de Trabalho\FIAP\Avaliações - FIAP\2º Ano\2º S
 C:\Users\mathe\OneDrive\Área de Trabalho\FIAP\Avaliações - FIAP\2º Ano\2º Semestre\Global Solution\EquilibraMais\EquilibraMais\obj\Debug\net9.0\EquilibraMais.pdb
 C:\Users\mathe\OneDrive\Área de Trabalho\FIAP\Avaliações - FIAP\2º Ano\2º Semestre\Global Solution\EquilibraMais\EquilibraMais\obj\Debug\net9.0\EquilibraMais.genruntimeconfig.cache
 C:\Users\mathe\OneDrive\Área de Trabalho\FIAP\Avaliações - FIAP\2º Ano\2º Semestre\Global Solution\EquilibraMais\EquilibraMais\obj\Debug\net9.0\ref\EquilibraMais.dll
+C:\Users\mathe\OneDrive\Área de Trabalho\FIAP\Avaliações - FIAP\2º Ano\2º Semestre\Global Solution\EquilibraMais\EquilibraMais\obj\Debug\net9.0\EquilibraMais.sourcelink.json
+C:\Users\mathe\OneDrive\Área de Trabalho\FIAP\Avaliações - FIAP\2º Ano\2º Semestre\Global Solution\EquilibraMais\EquilibraMais\bin\Debug\net9.0\HealthChecks.Oracle.dll
+C:\Users\mathe\OneDrive\Área de Trabalho\FIAP\Avaliações - FIAP\2º Ano\2º Semestre\Global Solution\EquilibraMais\EquilibraMais\bin\Debug\net9.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\mathe\OneDrive\Área de Trabalho\FIAP\Avaliações - FIAP\2º Ano\2º Semestre\Global Solution\EquilibraMais\EquilibraMais\bin\Debug\net9.0\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+C:\Users\mathe\OneDrive\Área de Trabalho\FIAP\Avaliações - FIAP\2º Ano\2º Semestre\Global Solution\EquilibraMais\EquilibraMais\bin\Debug\net9.0\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+C:\Users\mathe\OneDrive\Área de Trabalho\FIAP\Avaliações - FIAP\2º Ano\2º Semestre\Global Solution\EquilibraMais\EquilibraMais\bin\Debug\net9.0\Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore.dll
+C:\Users\mathe\OneDrive\Área de Trabalho\FIAP\Avaliações - FIAP\2º Ano\2º Semestre\Global Solution\EquilibraMais\EquilibraMais\bin\Debug\net9.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\mathe\OneDrive\Área de Trabalho\FIAP\Avaliações - FIAP\2º Ano\2º Semestre\Global Solution\EquilibraMais\EquilibraMais\bin\Debug\net9.0\Microsoft.Extensions.Hosting.Abstractions.dll

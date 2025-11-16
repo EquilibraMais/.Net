@@ -8,11 +8,15 @@ public class Funcionario_InfoEndpoints
 {
     public static void Map(RouteGroupBuilder group)
     {
-    group.MapGroup("/funcionarios_info").WithTags("Funcionario_info").RequireAuthorization();
+    group.MapGroup("/funcionarios_info").WithTags("Funcionario_info");
         
         //Get all
         group.MapGet("/funcionarios_info", async (EquilibraMaisDbContext db) =>
-            await db.FuncionarioInfos.ToListAsync())
+            await db.FuncionarioInfos
+                .Include(f => f.Usuario)
+                .ThenInclude(u => u.Setor)
+                .ThenInclude(s => s.Empresa)
+                .ToListAsync())
             .Produces<Funcionario_Info>(StatusCodes.Status200OK)
             .Produces(StatusCodes.Status404NotFound)
             .WithSummary("Retorna todas as informações dos funcionários")
@@ -21,8 +25,12 @@ public class Funcionario_InfoEndpoints
 
         //GetById
         group.MapGet("/funcionarios_info/{id}", async (int id, EquilibraMaisDbContext db) =>
-        {
-            var funcionarioInfo = await db.FuncionarioInfos.FindAsync(id);
+            {
+                var funcionarioInfo = await db.FuncionarioInfos
+                    .Include(f => f.Usuario)
+                    .ThenInclude(u => u.Setor)
+                    .ThenInclude(s => s.Empresa)
+                    .FirstOrDefaultAsync(f => f.Id == id);
             return funcionarioInfo is not null ? Results.Ok(funcionarioInfo) : Results.NotFound();
         })
         .Produces<Funcionario_Info>(StatusCodes.Status200OK)

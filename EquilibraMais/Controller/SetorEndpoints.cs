@@ -8,11 +8,13 @@ public class SetorEndpoints
 {
     public static void Map(RouteGroupBuilder group)
     {
-    group.MapGroup("/setores").WithTags("Setor").RequireAuthorization();
+    group.MapGroup("/setores").WithTags("Setor");
         
         //Get all
         group.MapGet("/setores", async (EquilibraMaisDbContext db) =>
-            await db.Setores.ToListAsync())
+            await db.Setores
+                .Include(s => s.Empresa)
+                .ToListAsync())
             .Produces<Setor>(StatusCodes.Status200OK)
             .Produces(StatusCodes.Status404NotFound)
             .WithSummary("Retorna todos os setores")
@@ -22,7 +24,9 @@ public class SetorEndpoints
         //GetById
         group.MapGet("/setores/{id}", async (int id, EquilibraMaisDbContext db) =>
         {
-            var setor = await db.Setores.FindAsync(id);
+            var setor = await db.Setores
+                .Include(s => s.Empresa)
+                .FirstOrDefaultAsync(s => s.Id == id);
             return setor is not null ? Results.Ok(setor) : Results.NotFound();
         })
         .Produces<Setor>(StatusCodes.Status200OK)

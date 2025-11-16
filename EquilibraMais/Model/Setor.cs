@@ -37,4 +37,6 @@ public class Setor : IBindableFromHttpContext<Setor>
     [Column("EMPRESA_ID")]
     [Description("Identificador único da Empresa que o Setor pertence")]
     public int Empresa_id { get; set; }
+    
+    public Empresa Empresa { get; set; }
 }

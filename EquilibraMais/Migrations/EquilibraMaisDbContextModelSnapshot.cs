@@ -131,7 +131,7 @@ namespace EquilibraMais.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("USUARIO_GS");
+                    b.ToTable("USUARIO");
                 });
 #pragma warning restore 612, 618
         }

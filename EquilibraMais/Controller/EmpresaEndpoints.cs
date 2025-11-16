@@ -8,7 +8,7 @@ public class EmpresaEndpoints
 {
     public static void Map(RouteGroupBuilder group)
     {
-    group.MapGroup("/empresas").WithTags("Empresa").RequireAuthorization();
+    group.MapGroup("/empresas").WithTags("Empresa");
         
         //Get all
         group.MapGet("/empresas", async (EquilibraMaisDbContext db) =>
