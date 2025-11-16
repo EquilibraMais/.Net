@@ -43,5 +43,5 @@ public class Usuario : IBindableFromHttpContext<Usuario>
     [Description("Identificador único do Setor que o Usuário pertence")]
     public int Setor_id { get; set; }
     
-    public Setor Setor { get; set; }
+    public required Setor Setor { get; set; }
 }
