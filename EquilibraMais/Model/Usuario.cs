@@ -28,7 +28,6 @@ public class Usuario : IBindableFromHttpContext<Usuario>
     [Column("ID")]
     [Key]
     [Description("Identificado único do Usuário")]
-    [JsonIgnore]
     public int Id { get; set; }
 
     [Column("NOME")]

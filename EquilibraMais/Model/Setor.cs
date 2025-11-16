@@ -27,7 +27,6 @@ public class Setor : IBindableFromHttpContext<Setor>
     [Column("ID")]
     [Key]
     [Description("Identificado único do Setor")]
-    [JsonIgnore]
     public int Id { get; set; }
     
     [Column("DESCRICAO")]

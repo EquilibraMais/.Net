@@ -27,7 +27,6 @@ public class Empresa : IBindableFromHttpContext<Empresa>
     [Column("ID")]
     [Key]
     [Description("Identificado único da Empresa")]
-    [JsonIgnore]
     public int Id { get; set; }
     
     [Column("NOME_EMPRESA")]

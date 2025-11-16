@@ -27,7 +27,6 @@ public class Funcionario_Info : IBindableFromHttpContext<Funcionario_Info>
     [Column("ID")]
     [Key]
     [Description("Identificado único das informações do funcionário")]
-    [JsonIgnore]
     public int Id { get; set; }
     
     [Column("HUMOR")]
