@@ -90,8 +90,10 @@ V2 - Contém os endpoints para relatórios detalhados por Setor (/api/v2/relator
 | Usuario          | POST        | /api/v1/usuarios/inserir                | Insere um novo usuário                           |
 | Usuario          | PUT         | /api/v1/usuarios/atualizar/{id}         | Atualiza um usuário                              |
 | Usuario          | DELETE      | /api/v1/usuarios/deletar/{id}           | Remove um usuário pelo ID                        |
-| Funcionario_Info | GET         | /api/v1/funcionario_infos               | Retorna todos os registros de funcionário       |
-| Funcionario_Info | GET         | /api/v1/funcionario_infos/{id}          | Retorna um registro de funcionário por ID       |
+| Funcionario_Info | GET         | /api/v1/funcionario_infos               | Retorna todos os registros de funcionário        |
+| Funcionario_Info | GET         | /api/v1/funcionario_infos/{id}          | Retorna um registro de funcionário por ID        |
+| Funcionario_Info | GET         | /api/v1/funcionario_infos/user_id/{id}  | Retorna um registro de funcionário por ID de Usuário|
+| Funcionario_Info | GET         | /api/v1/funcionario_infos/user/id/{id}/date/{date}| Retorna um registro de funcionário por ID de Usuário e Data de registro (Obs: A data precisa ser no modelo 'YYYY-MM-DD'|
 | Funcionario_Info | POST        | /api/v1/funcionario_infos/inserir       | Insere um registro de funcionário                |
 | Funcionario_Info | PUT         | /api/v1/funcionario_infos/atualizar/{id}| Atualiza um registro de funcionário              |
 | Funcionario_Info | DELETE      | /api/v1/funcionario_infos/deletar/{id}  | Remove um registro de funcionário pelo ID        |
