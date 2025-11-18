@@ -57,6 +57,10 @@ public class Funcionario_Info : IBindableFromHttpContext<Funcionario_Info>
     [Description("Identificador único do Usuario que o referencia as descrições do funcionário")]
     public int Usuario_id { get; set; }
     
+    [Column("DATA")]
+    [Description("Data em que o check foi feito")]
+    public DateTime Data { get; set; }
+    
     public required Usuario Usuario { get; set; }
     
 }

@@ -23,7 +23,7 @@ public class Funcionario_InfoEndpoints
             .WithDescription("Retorna todas as informações dos funcionários cadastradas no banco de dados, " +
                              "mesmo que só seja encontrado um funcionário, ele ainda vai retornar uma lista");
 
-        //GetById
+        //GetById por Id do registro
         group.MapGet("/funcionarios_info/{id}", async (int id, EquilibraMaisDbContext db) =>
             {
                 var funcionarioInfo = await db.FuncionarioInfos
@@ -36,8 +36,42 @@ public class Funcionario_InfoEndpoints
         .Produces<Funcionario_Info>(StatusCodes.Status200OK)
         .Produces(StatusCodes.Status404NotFound)
         .WithSummary("Busca a informação de um usuário pelo ID das informações")
-        .WithDescription("Retorna os dados de um funcionário específico com base no ID informado. " +
+        .WithDescription("Retorna os dados de um funcionário específico com base no ID do registro de informações. " +
                          "Caso o ID não exista, retorna 404 Not Found.");
+        
+        //GeyById por Id do Usuário
+        group.MapGet("/funcionarios_info/user_id/{usuario_id}", async (int usuario_id, EquilibraMaisDbContext db) =>
+            {
+                var lista = await db.FuncionarioInfos
+                    .Include(f => f.Usuario)
+                    .ThenInclude(u => u.Setor)
+                    .ThenInclude(s => s.Empresa) 
+                    .Where(f => f.Usuario_id == usuario_id)
+                    .ToListAsync();
+                return lista.Any() ? Results.Ok(lista) : Results.NotFound();
+            })
+            .Produces<List<Funcionario_Info>>(StatusCodes.Status200OK)
+            .Produces(StatusCodes.Status404NotFound)
+            .WithSummary("Busca a informação de um usuário pelo ID do usuário")
+            .WithDescription("Retorna os dados de um funcionário específico com base no ID do próprio usuário. " +
+                             "Caso o ID não exista, retorna 404 Not Found.");
+        
+        //GetByIdAndDate
+        group.MapGet("/funcionarios_info/user_id/{usuario_id:int}/date/{data:datetime}", async (int usuario_id, DateTime data, EquilibraMaisDbContext db) =>
+            {
+                var lista = await db.FuncionarioInfos
+                    .Include(f => f.Usuario)
+                    .ThenInclude(u => u.Setor)
+                    .ThenInclude(s => s.Empresa)
+                    .Where(f => f.Usuario_id == usuario_id && f.Data.Date == data)
+                    .ToListAsync();
+                return lista.Any() ? Results.Ok(lista) : Results.NotFound();
+            })
+            .Produces<List<Funcionario_Info>>(StatusCodes.Status200OK)
+            .Produces(StatusCodes.Status404NotFound)
+            .WithSummary("Busca a informação de um usuário pelo ID do usuário e data de registro")
+            .WithDescription("Retorna os dados de um funcionário específico com base no ID do próprio usuário + data de registro. " +
+                             "Caso o ID não exista, retorna 404 Not Found.");
         
         // Inserir
         group.MapPost("/funcionarios_info/inserir", async (Funcionario_Info funcionarioInfo, EquilibraMaisDbContext db) =>
@@ -68,6 +102,7 @@ public class Funcionario_InfoEndpoints
             existing.Sono = funcionarios_info.Carga;
             existing.Observacao = funcionarios_info.Observacao;
             existing.Historico_medico = funcionarios_info.Historico_medico;
+            existing.Data = funcionarios_info.Data;
             await db.SaveChangesAsync();
 
             return Results.Ok($"Informações de funcionário com ID {id} atualizado com sucesso.");
