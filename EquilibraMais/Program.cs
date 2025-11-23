@@ -8,20 +8,19 @@ using EquilibraMais.Services;
 
 public class Program
 {
-    public static async Task Main(string[] args)
-    {
+    public static async Task Main(string[] args) {
 
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddDbContext<EquilibraMaisDbContext>(options =>
-            options.UseOracle(builder.Configuration.GetConnectionString("OracleDb")));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("AzureSqlDb")));
 
         builder.Services.AddOpenApi();
         
         // Grupo de HealthChecks
         builder.Services.AddHealthChecks()
-            .AddOracle(
-                builder.Configuration.GetConnectionString("OracleDb"),
+            .AddSqlServer(
+                builder.Configuration.GetConnectionString("AzureSqlDb"),
                 healthQuery: "SELECT 1 FROM DUAL",
                 name: "oracle",
                 tags: new[] { "db", "oracle" }

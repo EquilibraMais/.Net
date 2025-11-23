@@ -14,10 +14,10 @@ public class EquilibraMaisDbContextFactory : IDesignTimeDbContextFactory<Equilib
             .AddJsonFile("appsettings.json")
             .Build();
 
-        var connectionString = config.GetConnectionString("OracleDb");
+        var connectionString = config.GetConnectionString("AzureSqlDb");
 
         var optionsBuilder = new DbContextOptionsBuilder<EquilibraMaisDbContext>();
-        optionsBuilder.UseOracle(connectionString);
+        optionsBuilder.UseSqlServer(connectionString);
 
         return new EquilibraMaisDbContext(optionsBuilder.Options);
     }
