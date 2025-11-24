@@ -40,7 +40,7 @@ cd EquilibraMais
 
 ```json
 "ConnectionStrings": {
-  "AzureSqlDb": //Adicionar posteriormente
+  "AzureSqlDb": "Server=tcp:servidor-sqldb-equilibramais.database.windows.net,1433;Initial Catalog=sqldb-equilibramais-001;Persist Security Info=False;User ID=adm-sqldb-equilibramais;Password=Fiap@2tdspf;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 }
 ```
 
